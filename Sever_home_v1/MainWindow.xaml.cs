@@ -319,17 +319,7 @@ namespace Sever_home_v1
             // if (!currentPort.IsOpen) return;
             //currentPort.Write("1");
         }
-        
-        //Функция кнопки что запускает слушатель сокета
-
-        private void btnZero_Click(object sender, RoutedEventArgs e)
-        {
-            Thread myThread = new Thread(new ThreadStart(serverCoket));
-            myThread.Start(); // запускаем поток
-            SocetStatus.Fill = (System.Windows.Media.Brush)this.TryFindResource("StOn");
-            //serverCoket();
-        }
-
+        //Функция кнопки что закрывает соединение с комппортом
         private void ButPortClose(object sender, RoutedEventArgs e)
         {
             port.Close();
@@ -341,6 +331,18 @@ namespace Sever_home_v1
             BrStatus.Fill = (System.Windows.Media.Brush)this.TryFindResource("StatusOff");
 
         }
+
+        //Функция кнопки что запускает слушатель сокета
+
+        private void btnZero_Click(object sender, RoutedEventArgs e)
+        {
+            Thread myThread = new Thread(new ThreadStart(serverCoket));
+            myThread.Start(); // запускаем поток
+            SocetStatus.Fill = (System.Windows.Media.Brush)this.TryFindResource("StOn");
+            //serverCoket();
+        }
+
+        //Функция кнопки что отправляет набранное сообщение в порт компа (сом порт для Ардуино)
         public static void SendtoCom(string Csend)
         {
            // MessageBox.Show("Send to Arduino " + Csend, "Внимание");
@@ -350,7 +352,8 @@ namespace Sever_home_v1
             }
             catch (Exception e)
             {
-                //  Console.WriteLine("Error: " + e.Message); Console.ReadLine(); return; 
+                  Console.WriteLine("Error: " + e.Message);
+                //Console.ReadLine(); return; 
             //    MessageBox.Show("Error in  +" + e.Message,
               //                      "вот оно че");
             }
