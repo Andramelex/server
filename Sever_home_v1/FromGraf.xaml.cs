@@ -22,8 +22,8 @@ namespace Sever_home_v1
     /// </summary>
     public partial class FromGraf : Window
     {
-        double[] chartOneHore = new double[5];
-        string[] chartOneDataHore = new string[5];
+        double[] chartOneHore = new double[6];
+        string[] chartOneDataHore = new string[6];
         public FromGraf()
         {
             InitializeComponent();
@@ -38,7 +38,7 @@ namespace Sever_home_v1
 
         public void PuttGraf()
         {
-            string path = @"D:\SomeDir\data_2.txt";
+            string path = @"E:\SomeDir\data_2.txt";
            
             LoadData(path);
             SeriesCollection = new SeriesCollection
@@ -63,23 +63,29 @@ namespace Sever_home_v1
             {
                 int contLine = 0;
                 string line;
-                while((line = sr.ReadLine()) != null)
+               
+                // while((line = sr.ReadLine()) != null)
+                while (contLine<6)
                 {
+                    line = sr.ReadLine();
                     line = line.Replace(".", ",");
                     line = line.Replace("+", "");
                     line = line.Replace(";", "");
+                    Console.WriteLine(contLine+"лайн равен: " + line);
                     chartOneHore[contLine] = Convert.ToDouble(line); 
                  contLine ++;
                         }
 
             }
             
-            using (StreamReader sr = new StreamReader(@"D:\SomeDir\data_time.txt", System.Text.Encoding.Default))
+            using (StreamReader sr = new StreamReader(@"E:\SomeDir\data_time.txt", System.Text.Encoding.Default))
             {
                 int contLine = 0;
                 string line;
-                while ((line = sr.ReadLine()) != null)
+                //while ((line = sr.ReadLine()) != null)
+                while (contLine < 6)
                 {
+                    line = sr.ReadLine();
                     line = line.Replace(";", "");
                     chartOneDataHore[contLine] =line;
                     contLine++;
@@ -89,6 +95,10 @@ namespace Sever_home_v1
 
         }
 
+        private void SetLoad_1(object sender, RoutedEventArgs e)
+        {
+            PuttGraf();
+        }
     }
 }
 
