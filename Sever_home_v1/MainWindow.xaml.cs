@@ -41,11 +41,9 @@ namespace Sever_home_v1
         Socket handler;
         int OtvetSocketInt = 0;
         int AvtDataCom = 0;
-       // Uri uri = new Uri(@"D:\wamp2\www\3\images\cam\web1.jpg", UriKind.Absolute);
-       // BitmapImage bitmap;
-       // BitmapImage bitmap = new BitmapImage();
+       
 
-        //Image img = new Image();
+        
         public static double[] CoMass = new double[10];
         public static string[] CoMassData = new string[10];
        
@@ -152,6 +150,7 @@ namespace Sever_home_v1
 
        public IPEndPoint clientep;
        public static string datasoketToGraf = "";
+        // Функция для  работы с сокетом, создание, обработка.
         private void serverCoket()
         {
             // создаем сокет
@@ -234,7 +233,7 @@ namespace Sever_home_v1
 
 
 
-
+        // Функция обработки выборка комп-порта 
         private void serchCom()
         {
             // string[] ports = SerialPort.GetPortNames();
@@ -304,7 +303,12 @@ namespace Sever_home_v1
                 lblPortData.Content = "Ожидаем";
             }
         }
+      
+        
+        //==========================Блок кнопок
+        //======================================
 
+        //Функция кнопки что запускает соединение с комппортом
         private void btnOne_Click(object sender, RoutedEventArgs e)
         {
             //TextBox.Text = "aaaa";
@@ -315,6 +319,8 @@ namespace Sever_home_v1
             // if (!currentPort.IsOpen) return;
             //currentPort.Write("1");
         }
+        
+        //Функция кнопки что запускает слушатель сокета
 
         private void btnZero_Click(object sender, RoutedEventArgs e)
         {

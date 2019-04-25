@@ -30,8 +30,7 @@ namespace Sever_home_v1
             chartOneHore[0] = 0;
         }
        
-        
-
+     
         public SeriesCollection SeriesCollection { get; set; }
         public string[] Labels { get; set; }
         public Func<double, string> YFormatter { get; set; }
