@@ -96,15 +96,30 @@ namespace Sever_home_v1
         public void LoadDataDay(string path) {
             LabelText.Text = "Данные за последний день";
             string line;
+            double znachenie;
+            double sum = 0;
            // int coint=0;
             for (int i = 0; i < dLong; i++)
             {
-                List<string> lines = File.ReadLines(path).Reverse().Skip(60 * i).Take((60 * i) + 1).ToList();
-                line = lines[i];
-                line = line.Replace(".", ",");
-                line = line.Replace("+", "");
-                line = line.Replace(";", "");
+                List<string> lines = File.ReadLines(path).Reverse().Skip(60 * i).Take((60 * i) + 60).ToList();
+                for (int z = 0; z < 60; z++)
+                {
+                    line = lines[z];
+                    line = line.Replace(".", ",");
+                    line = line.Replace("+", "");
+                    line = line.Replace(";", "");
+                    znachenie = Convert.ToDouble(line);
+                    sum += znachenie;
+                }
+                Console.WriteLine(i + " сумма за час " + sum);
+                sum = sum / 60;
+                line = sum.ToString("0.##");
+                
                 chartOneHore[i] = Convert.ToDouble(line);
+
+                
+
+
             }
             for (int i = 0; i < dLong; i++) {
                 List<string> lines2 = File.ReadLines(@"D:\SomeDir\data_time.txt").Reverse().Skip(60 * i).Take((60 * i) + 1).ToList();
