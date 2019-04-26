@@ -10,7 +10,7 @@
 
     <Grid>
 
-        <Wpf:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Bottom" MinHeight="1" MinWidth="1" Margin="0,0,92,59"  >
+        <Wpf:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Bottom" MinHeight="1" MinWidth="1" Margin="10,24,82,74"  >
             <Wpf:CartesianChart.AxisY>
                 <Wpf:Axis Title="Значение" />
             </Wpf:CartesianChart.AxisY>
@@ -26,6 +26,8 @@
         <Button Content="Дата 4 темп ЗЗ" HorizontalAlignment="Left" Margin="175,389,0,0" VerticalAlignment="Top" Width="120" Click="SetLoad_4"/>
         <Button Content="Дата Co new " HorizontalAlignment="Left" Margin="315,360,0,0" VerticalAlignment="Top" Width="75" Click="SetLoad_5"/>
         <Button Content="Дата 7 Влажн ЗЗ" HorizontalAlignment="Left" Margin="175,360,0,0" VerticalAlignment="Top" Width="120" Click="SetLoad_6"/>
+        <Button Content="1 день СО-олд" HorizontalAlignment="Left" Margin="300,20,0,0" VerticalAlignment="Top" Width="75" Click="day_set1"/>
+        <TextBox x:Name="LabelText" HorizontalAlignment="Left" Height="23" Margin="40,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235" IsEnabled="False" BorderBrush="{x:Null}" Background="#66E3E69C"/>
 
 
 

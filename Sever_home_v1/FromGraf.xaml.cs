@@ -25,7 +25,7 @@ namespace Sever_home_v1
         static int nLong = 60;
         double[] chartOneHore = new double[nLong];
         string[] chartOneDataHore = new string[nLong];
-        int dataLock = 0;
+        int dLong = 24;
         
         public FromGraf()
         {
@@ -35,7 +35,6 @@ namespace Sever_home_v1
             PuttGraf();
         }
        
-     
         public SeriesCollection SeriesCollection { get; set; }
         public string[] Labels { get; set; }
         public Func<double, string> YFormatter { get; set; }
@@ -44,13 +43,11 @@ namespace Sever_home_v1
         public void PuttGraf()
         {
             
-           
-            
             SeriesCollection = new SeriesCollection
             {
                 new LineSeries
                 {
-                    Title = "Последний час",
+                    Title = "Мониторинг",
 
                   Values = new ChartValues <double> {chartOneHore[0], chartOneHore[1], chartOneHore[2], chartOneHore[3], chartOneHore[4], chartOneHore[5], chartOneHore[6], chartOneHore[7], chartOneHore[8],
                    chartOneHore[9], chartOneHore[10], chartOneHore[11], chartOneHore[12], chartOneHore[13], chartOneHore[14], chartOneHore[15], chartOneHore[16], chartOneHore[17], chartOneHore[18], chartOneHore[19]}
@@ -65,49 +62,11 @@ namespace Sever_home_v1
             XFormatter = val => new DateTime((long)val).ToString("yyyy");
             DataContext = this;
         }
-       // public void
-        public void LoadData2(string path) {
-            
-            using (StreamReader sr = new StreamReader(path, System.Text.Encoding.Default))
-            {
-                int contLine = 0;
-                string line;
-               
-                // while((line = sr.ReadLine()) != null)
-                while (contLine< nLong)
-                {
-                    line = sr.ReadLine();
-                    line = line.Replace(".", ",");
-                    line = line.Replace("+", "");
-                    line = line.Replace(";", "");
-                    Console.WriteLine(contLine+"лайн равен: " + line);
-                    chartOneHore[contLine] = Convert.ToDouble(line); 
-                 contLine ++;
-                        }
-
-            }
-            
-            using (StreamReader sr = new StreamReader(@"D:\SomeDir\data_time.txt", System.Text.Encoding.Default))
-            {
-                int contLine = 0;
-                string line;
-                //while ((line = sr.ReadLine()) != null)
-                while (contLine < nLong)
-                {
-                    line = sr.ReadLine();
-                    line = line.Replace(";", "");
-                    chartOneDataHore[contLine] =line;
-                    contLine++;
-                }
-
-            }
-           
-
-        }
+      
         public void LoadData(string path)
         {
+            LabelText.Text = "Данные за последний час";
             string line;
-           
             List<string> lines = File.ReadLines(path).Reverse().Take(nLong).ToList();
             //Console.WriteLine(" мы прочитали: " + lines);
           
@@ -123,7 +82,6 @@ namespace Sever_home_v1
 
                 }
 
-
              lines = File.ReadLines(@"D:\SomeDir\data_time.txt").Reverse().Take(nLong).ToList();
             {
                 for (int i = 0; i < nLong; i++) {
@@ -132,14 +90,31 @@ namespace Sever_home_v1
                     chartOneDataHore[i] = line;
                    
                 }
-
             }
-
-
         }
 
-        
+        public void LoadDataDay(string path) {
+            LabelText.Text = "Данные за последний день";
+            string line;
+           // int coint=0;
+            for (int i = 0; i < dLong; i++)
+            {
+                List<string> lines = File.ReadLines(path).Reverse().Skip(60 * i).Take((60 * i) + 1).ToList();
+                line = lines[i];
+                line = line.Replace(".", ",");
+                line = line.Replace("+", "");
+                line = line.Replace(";", "");
+                chartOneHore[i] = Convert.ToDouble(line);
+            }
+            for (int i = 0; i < dLong; i++) {
+                List<string> lines2 = File.ReadLines(@"D:\SomeDir\data_time.txt").Reverse().Skip(60 * i).Take((60 * i) + 1).ToList();
+                line = lines2[i];
+                line = line.Replace(";", "");
+                chartOneDataHore[i] = line;
+                Console.WriteLine(i + " способ даты LISTstring: " + lines2[i]);
+            }
 
+        }
 
         public void clearValues()
         {
@@ -162,13 +137,25 @@ namespace Sever_home_v1
                      Array.Copy(animals, Labels, nLong);
                     // Labels = animals;
                  });
-
-                
-              
-            
-           
-           
+ 
         }
+        public void clearValuesDay() {
+            string[] LablCopy = new string[nLong];
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                SeriesCollection[0].Values.Clear();
+                
+                for (int i=0; i< dLong; i++)
+                {
+                    SeriesCollection[0].Values.Add(chartOneHore[i]);
+                    LablCopy[i] = chartOneDataHore[i];
+                  
+                }
+                Array.Copy(LablCopy, Labels, nLong);
+
+            });
+        }
+
         private void SetLoad_1(object sender, RoutedEventArgs e)
         {
             
@@ -213,6 +200,13 @@ namespace Sever_home_v1
             LoadData(path);
             clearValues();
         }
+
+        private void day_set1(object sender, RoutedEventArgs e)
+        {
+            string path = @"D:\SomeDir\data_5.txt";
+            LoadDataDay(path);
+            clearValuesDay();
+        }    
     }
 }
 
