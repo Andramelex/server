@@ -742,6 +742,7 @@ namespace Sever_home_v1
             }
            ;
         }
+
         // функция, что запускается при обработке входящих данных из сокета. Если есть 1 (код запроса на данные) = шлем в сокет ответку 
         private void OtvetSocket()
         { if (OtvetSocketInt == 1)
@@ -769,11 +770,13 @@ namespace Sever_home_v1
                 }
             }
         }
+        
         // метод отрабаывает когда чекбокс автообновления включен
         private void CheckBox_Checked1(object sender, RoutedEventArgs e)
         {
             AvtDataCom = 1;
         }
+       
         // метод отрабаывает когда чекбокс автообновления выключен
         private void CheckBox_Unchecked1(object sender, RoutedEventArgs e)
         {
@@ -806,21 +809,46 @@ namespace Sever_home_v1
             }
         }
 
-        // кнопка для открытия формы с графиком солнечной панели
+        int polarEnable = 0; // кнопка для открытия формы с графиком солнечной панели и ее переменная-счетчк открытия
         private void ShowBar(object sender, RoutedEventArgs e) 
         {
-            Bar1 barTabSwhov = new Bar1();
-            barTabSwhov.Owner = this;
-            barTabSwhov.WindowStartupLocation = System.Windows.WindowStartupLocation.Manual;
 
-            double Top = this.Top;
-            double Left = this.Left;
-            barTabSwhov.Left= this.Left + (this.Height+150);
-            barTabSwhov.Top = this.Top;
-            barTabSwhov.Show();
+            string win = "";
+            foreach (Window window in Application.Current.Windows)
+            {
+
+                win += window.ToString();
+
+                if (window.Title == "Монитор Солнечной панели")
+                {
+                    window.Close();
+                    //wingraptab.Close();
+                    polarEnable = 1;
+
+                    //  MessageBox.Show(win);
+                    break;
+                };
+
+            }
+            if (polarEnable == 0)
+            {
+                Bar1 barTabSwhov = new Bar1();
+                barTabSwhov.Owner = this;
+                barTabSwhov.WindowStartupLocation = System.Windows.WindowStartupLocation.Manual;
+
+                double Top = this.Top;
+                double Left = this.Left;
+                barTabSwhov.Left = this.Left + (this.Height + 200);
+                barTabSwhov.Top = this.Top;
+                barTabSwhov.Show();
+
+            }
+            else { polarEnable = 0; }
+
+
         }
 
-        int wingraptableEnable = 0;  // кнопка для открытия формы с управлением домом :)
+        int wingraptableEnable = 0;  // кнопка для открытия формы с управлением домом :)  и ее переменная-счетчк открытия
         private void ShowWGTab(object sender, RoutedEventArgs e)
         {
            
@@ -867,9 +895,9 @@ namespace Sever_home_v1
 
                  } else {wingraptableEnable = 0;}
 
-
             }
-        int graptableEnable = 0;  // кнопка для открытия формы графика :)
+
+        int graptableEnable = 0;  // кнопка для открытия формы графика :)  и ее переменная-счетчк открытия
         private void ShowGraf(object sender, RoutedEventArgs e)
         {
             string labelWindows = "";

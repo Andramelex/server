@@ -6,23 +6,24 @@
         xmlns:local="clr-namespace:Sever_home_v1"
         xmlns:Wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" x:Class="Sever_home_v1.Bar1"
         mc:Ignorable="d"
-        Title="Монитор Солнечной панели" Height="364" Width="618"  Margin="0" Icon="unnamed.ico"  ResizeMode="CanMinimize"  >
+        Title="Монитор Солнечной панели" Height="364" Width="533"  Margin="0" Icon="unnamed.ico"  ResizeMode="CanMinimize"  >
 
-    <Grid >
-
-
-        <Wpf:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Bottom" Grid.RowSpan="3" Grid.ColumnSpan="3" MinHeight="1" MinWidth="1"  >
+    <Grid Margin="0,0,4,-1" >
+        <Wpf:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Bottom" MinHeight="1" MinWidth="1" Margin="10,24,43,74"  >
             <Wpf:CartesianChart.AxisY>
-                <Wpf:Axis Title="mA" />
+                <Wpf:Axis Title="Значение" />
             </Wpf:CartesianChart.AxisY>
             <Wpf:CartesianChart.AxisX>
-                <Wpf:Axis Title="Время" LabelsRotation="-20" Labels="{Binding Labels}"/>
+                <Wpf:Axis Title="Время" LabelsRotation="-20" Labels="{Binding Labels}" />
+
 
             </Wpf:CartesianChart.AxisX>
         </Wpf:CartesianChart>
-        <TextBox x:Name="Tex1" HorizontalAlignment="Left" Height="49" Margin="480,21,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="110" BorderBrush="White"/>
-        <Button Content="Обновить" HorizontalAlignment="Left" Height="35" Margin="515,289,0,0" VerticalAlignment="Top" Width="75" Click="ReloadGraf"/>
-       
+        <Button x:Name="BarDay" Content="Данные за сутки" HorizontalAlignment="Left" Margin="35,266,0,0" VerticalAlignment="Top" Width="125" Height="30" Click="LoadDataDay"/>
+        <TextBox x:Name="Tex1" HorizontalAlignment="Left" Height="60" Margin="405,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" BorderBrush="White" IsEnabled="False"/>
+        <Button Content="Данные за час" HorizontalAlignment="Left" Height="29" Margin="365,267,0,0" VerticalAlignment="Top" Width="115" Click="ReloadGraf"/>
+        <TextBox x:Name="tex2" HorizontalAlignment="Left" Height="23" Margin="200,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsEnabled="False" BorderBrush="{x:Null}" Background="#66EFF7BB"/>
+
     </Grid>
 
 </Window>
