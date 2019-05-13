@@ -13,7 +13,8 @@ using System.Net.Sockets;
 using System.Threading;
 using System.IO;
 using System.Drawing;
-
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Sever_home_v1
 {
@@ -41,6 +42,7 @@ namespace Sever_home_v1
         Socket handler;
         int OtvetSocketInt = 0;
         int AvtDataCom = 0;
+       public static string[] writePath = new string[10];
        
 
         
@@ -55,6 +57,16 @@ namespace Sever_home_v1
             CoMassData [0]="0";
             CoMassData[1] = "1";
             CoMassData[2] = "";
+            writePath[0] = @"D:\SomeDir\data_1.txt";
+            writePath[1] = @"D:\SomeDir\data_2.txt";
+            writePath[2] = @"D:\SomeDir\data_3.txt";
+            writePath[3] = @"D:\SomeDir\data_4.txt";
+            writePath[4] = @"D:\SomeDir\data_5.txt";
+            writePath[5] = @"D:\SomeDir\data_6.txt";
+            writePath[6] = @"D:\SomeDir\data_7.txt";
+            writePath[7] = @"D:\SomeDir\data_8.txt";
+            writePath[8] = @"D:\SomeDir\data_9.txt";
+            writePath[9] = @"D:\SomeDir\data_time.txt";
 
             InitializeComponent();
             serchCom();
@@ -105,12 +117,10 @@ namespace Sever_home_v1
             // 
         }
 
-        
+        // методо загрузки картинки камеры.
         private void Barpush()
         {
-            //Uri uri = new Uri("Resources\ai_back.jpg", UriKind.Relative);
-            //ImageSource imgSource = new BitmapImage(uri);
-            //var bitmap = new BitmapImage();
+            
             BitmapImage bitmap = new BitmapImage();
             var stream = File.OpenRead(@"D:\wamp2\www\3\images\cam\web1.jpg");
            bitmap.BeginInit();
@@ -119,37 +129,20 @@ namespace Sever_home_v1
             bitmap.StreamSource = stream;
            bitmap.EndInit();
            stream.Close();
-            /*
-
-             bitmap.BeginInit();
-            bitmap.UriSource = (new Uri(@"E:\ai_back.jpg", UriKind.Absolute));
-            bitmap.CacheOption = BitmapCacheOption.OnLoad;
-            bitmap.EndInit();
-            
-            //D:\\wamp2\\www\\3\\images\\cam\\web1.jpg
-            // E:\\1\\Project\\C#\\1\\Sever_home_v1\\Sever_home_v1\\Resources\\ai_back.JPG
-
-            bitmap.BeginInit();
-            bitmap.UriSource = uri;
-            bitmap.EndInit();
-            */
-            //bitmap = new BitmapImage(uri);
-            //  imgCam.Source = bitmap;
+           
             Application.Current.Dispatcher.Invoke(() =>
             {
                 imgCam.Source = bitmap;
             });
            
-            // bitmap = null;
-            // stream = null;
-            //imgCam.Source = new BitmapImage(new Uri(@"file:///E:/1/Project/C#/1/Sever_home_v1/Sever_home_v1/Resources/ai_back.JPG"));
-            // BitmapFrame.Create(new Uri("Resources\ai_back.jpg)
+            
         }
 
         public Socket listenSocket;
 
        public IPEndPoint clientep;
        public static string datasoketToGraf = "";
+
         // Функция для  работы с сокетом, создание, обработка.
         private void serverCoket()
         {
@@ -362,8 +355,8 @@ namespace Sever_home_v1
 
         private void BtSendOne_1(object sender, RoutedEventArgs e)
         {
-            SendtoCom("2");
-            //port.Write("2");
+           
+            LongLogCut();
             Console.WriteLine("Отправили 2");
 
         }
@@ -461,7 +454,7 @@ namespace Sever_home_v1
            
             chekCam = 0;
         }
-
+        // функция запроса от ардуины по комп порту данных, шлем ему команду и потом вызываем разбор данных (свою функцию)
         private void LoadDateCom()
         {
             SendtoCom("1");
@@ -478,31 +471,32 @@ namespace Sever_home_v1
             RazborDateCom();
         }
 
+
+
+        
         //функция что разбирает данные полученные по ком-порту. Она их сохраняет
         public void RazborDateCom()
         {
+
            // MessageBox.Show("Запустили разбор" ,
            //       "Внимание");
-            string[] writePath = new string[10];
+           
 
-            writePath[0] = @"D:\SomeDir\data_1.txt";
-            writePath[1] = @"D:\SomeDir\data_2.txt";
-            writePath[2] = @"D:\SomeDir\data_3.txt";
-            writePath[3] = @"D:\SomeDir\data_4.txt";
-            writePath[4] = @"D:\SomeDir\data_5.txt";
-            writePath[5] = @"D:\SomeDir\data_6.txt";
-            writePath[6] = @"D:\SomeDir\data_7.txt";
-            writePath[7] = @"D:\SomeDir\data_8.txt";
-            writePath[8] = @"D:\SomeDir\data_9.txt";
-            writePath[9] = @"D:\SomeDir\data_time.txt";
+           // writePath[0] = @"D:\SomeDir\data_1.txt";
+           // writePath[1] = @"D:\SomeDir\data_2.txt";
+            //writePath[2] = @"D:\SomeDir\data_3.txt";
+            //writePath[3] = @"D:\SomeDir\data_4.txt";
+            //writePath[4] = @"D:\SomeDir\data_5.txt";
+            //writePath[5] = @"D:\SomeDir\data_6.txt";
+            //writePath[6] = @"D:\SomeDir\data_7.txt";
+            //writePath[7] = @"D:\SomeDir\data_8.txt";
+            //writePath[8] = @"D:\SomeDir\data_9.txt";
+            //writePath[9] = @"D:\SomeDir\data_time.txt";
             if (splitData[0]=="1")
             {
                 for (int i=1; i < splitData.Length;i++)
                 {
                     
-
-                    // E:\\1\\Project\\C#\\1\\Sever_home_v1\\Sever_home_v1\\Resources\\ai_back.JPG
-
 
                     using (StreamWriter sw = new StreamWriter(writePath[i], true, System.Text.Encoding.Default))
                    {
@@ -518,8 +512,29 @@ namespace Sever_home_v1
                    
                 }
             }
-            
+            LongLogCut();
         }
+        public static void LongLogCut() {
+           // MessageBox.Show("Запустили обрезку","Внимание");
+            for (int i = 1; i < 10; i++) {
+              //  MessageBox.Show("Запустили готовимся читать  строку {}"+i, "Внимание");
+                List<string> linesCut = File.ReadLines(writePath[i]).Reverse().Take(1444).ToList();
+                linesCut.Reverse();
+              //  MessageBox.Show("прочитали и обрезали строку {}" + i+ linesCut[i], "Внимание");
+                using (StreamWriter sw = new StreamWriter(writePath[i], false, System.Text.Encoding.Default))
+                {
+                //    MessageBox.Show("готовимся записать обрезанную {}" + i, "Внимание");
+                    foreach (string str in linesCut) {
+                   
+                    sw.WriteLine(str);
+                    }
+                //    MessageBox.Show("записали{}" + i, "Внимание");
+                }
+            }
+           
+        }
+
+
 
         // функция для разбора данных что пришли по сокету
         public void RazborDateSoc()

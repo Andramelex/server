@@ -56,7 +56,7 @@ namespace Sever_home_v1
             //TextBox.Text = returnMessage;
             //returnMessage = "12;13;14;15;16;";
             splitData = returnMessage.Split(';');
-            Textbox_hub_th.Text = ("T: " + splitData[2] + "  H: " + splitData[1]);
+            Textbox_hub_th.Text = ("T: " + splitData[1] + "  H: " + splitData[2]);
             Textbox_zzz_co.Text = ("Co: " + splitData[4]);
             Textbox_zzz_th.Text = ("T: " + splitData[6] + "  H: " + splitData[7]);
             //TextBox.Text = splitData;
@@ -73,11 +73,17 @@ namespace Sever_home_v1
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+      
+        private void Button_Click_clearLog(object sender, RoutedEventArgs e)
         {
-           
+            clearLog();
+
         }
 
-       
+        private void clearLog()
+        {
+           MainWindow.LongLogCut();
+            throw new NotImplementedException();
+        }
     }
 }

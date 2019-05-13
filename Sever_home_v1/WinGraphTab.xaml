@@ -15,8 +15,8 @@
         </Grid.Background>
         <Border BorderBrush="#00B26868" BorderThickness="1" HorizontalAlignment="Left" Height="20" Margin="259,223,0,0" VerticalAlignment="Top" Width="125" Background="#CC6F6F89"/>
         <Border BorderBrush="#00B26868" BorderThickness="1" HorizontalAlignment="Left" Height="20" Margin="314,148,0,0" VerticalAlignment="Top" Width="125" Background="#CC6F6F89"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="406,25,0,0" VerticalAlignment="Top" Width="75" Click="LoaData"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="406,60,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="Включить" HorizontalAlignment="Left" Margin="406,25,0,0" VerticalAlignment="Top" Width="75" Click="LoaData"/>
+        <Button x:Name="ButClearLog" Content="Обрезать логи" HorizontalAlignment="Left" Margin="390,60,0,0" VerticalAlignment="Top" Width="91" Click="Button_Click_clearLog"/>
         <CheckBox Content="Свет в коридоре" HorizontalAlignment="Left" Margin="318,150,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Foreground="#FFDAF531" BorderBrush="#FF939750" Background="White"/>
         <CheckBox Content="Свет в прихожей" HorizontalAlignment="Left" Margin="266,225,0,0" VerticalAlignment="Top" BorderBrush="#FF7D7E6F" Foreground="#FFC9C33D" Checked="CheckBox_Checked_1" Unchecked="CheckBox_Unchecked_1"/>
         <TextBox x:Name="Textbox_zzz_co" HorizontalAlignment="Left" Height="24" Margin="285,21,0,0" TextWrapping="Wrap" Text="Co: " VerticalAlignment="Top" Width="54" Background="#99FFFFFF" Foreground="#FF368B61" BorderBrush="#00ABADB3" IsEnabled="False"/>
