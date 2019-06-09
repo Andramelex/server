@@ -23,7 +23,7 @@
         <Button Content="Дата_2 влжаность хаба" HorizontalAlignment="Left" Margin="10,360,0,0" VerticalAlignment="Top" Width="130" Click="SetLoad_1" Height="20"/>
         <Button Content="Дата_5 Со олд" HorizontalAlignment="Left" Margin="315,389,0,0" VerticalAlignment="Top" Width="83" Click="SetLoad_2"/>
         <Button Content="Дата 3 Температура Хаба" HorizontalAlignment="Left" Margin="10,389,0,0" VerticalAlignment="Top" Width="155" Click="SetLoad_3"/>
-        <Button Content="Дата 4 темп ЗЗ" HorizontalAlignment="Left" Margin="175,389,0,0" VerticalAlignment="Top" Width="120" Click="SetLoad_4"/>
+        <Button Content="tемп ЗЗ" HorizontalAlignment="Left" Margin="175,389,0,0" VerticalAlignment="Top" Width="120" Click="Butt_temoZZ"/>
         <Button Content="Дата Co new " HorizontalAlignment="Left" Margin="315,360,0,0" VerticalAlignment="Top" Width="75" Click="SetLoad_5"/>
         <Button Content="Дата 7 Влажн ЗЗ" HorizontalAlignment="Left" Margin="175,360,0,0" VerticalAlignment="Top" Width="120" Click="SetLoad_6"/>
         <Button Content="2 день СО-олд" HorizontalAlignment="Left" Margin="395,20,0,0" VerticalAlignment="Top" Width="75" Click="day_set1"/>

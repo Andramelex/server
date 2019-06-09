@@ -202,7 +202,7 @@ namespace Sever_home_v1
             clearValues();
         }
 
-        private void SetLoad_4(object sender, RoutedEventArgs e)
+        private void Butt_temoZZ(object sender, RoutedEventArgs e)
         {
             string path = @"D:\SomeDir\data_8.txt";
             LoadData(path);
