@@ -66,13 +66,10 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
@@ -88,6 +85,11 @@
     </ApplicationDefinition>
     <Compile Include="FromGraf.xaml.cs">
       <DependentUpon>FromGraf.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="WinGraphTab.xaml.cs">
       <DependentUpon>WinGraphTab.xaml</DependentUpon>
@@ -123,11 +125,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -166,16 +163,10 @@
     <Folder Include="Resourse\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\039727d622d0.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\ai_back.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\ThinkstockPhotos-509258281.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\home3_load.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\home4_load.jpg" />

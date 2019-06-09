@@ -21,7 +21,7 @@
         <Canvas.Background>
             <ImageBrush ImageSource="Resources/ThinkstockPhotos-509258281.jpg" Stretch="UniformToFill"/>
         </Canvas.Background>
-        <Label x:Name="lblPortData" FontSize="12" HorizontalAlignment="Center" Content="..." Width="163" Canvas.Left="421" Background="{x:Null}" Height="30" Foreground="#FFEAEA58" Canvas.Top="5"/>
+        <Label x:Name="lblPortData" HorizontalAlignment="Center" Content="..." Width="163" Canvas.Left="421" Background="{x:Null}" Height="30" Foreground="#FFEAEA58" Canvas.Top="9" FontSize="11"/>
         <Button x:Name="btnOne" Click="btnOne_Click" Height="30" Content="Serial Port Open" Canvas.Left="316" Canvas.Top="35" Width="105"/>
         <Button x:Name="btnZero" Click="btnZero_Click" Height="30" Content="Socet Start" Canvas.Left="460" Canvas.Top="80" Width="80"/>
         <TextBox x:Name="TextBox" Height="131" TextWrapping="Wrap" Canvas.Left="85" Canvas.Top="85" Width="200" >
@@ -42,8 +42,8 @@
         <Button x:Name="btCom1" Content="1" Canvas.Left="50" Canvas.Top="115" Width="25" Click="Button_Click_1" RenderTransformOrigin="0.4,0.75"/>
         <Ellipse x:Name="BrStatus_Copy" Height="12" Canvas.Left="550" Canvas.Top="46" Width="15" RenderTransformOrigin="0.333,0.417" Fill="#FF387076"/>
         <Ellipse x:Name="BrStatus" Height="12" Canvas.Left="550" Stroke="#1EBBA4A4" Canvas.Top="45" Width="15" RenderTransformOrigin="0.333,0.417" Fill="{DynamicResource StatusOff}"/>
-        <Label x:Name="LabelData" Content="Data" Canvas.Left="280" Canvas.Top="9" Width="125" Foreground="#FFA4A84F"/>
-        <Image x:Name="imgCam" Height="110" Canvas.Left="60" Canvas.Top="235" Width="132" Source="Resources/039727d622d0.jpg"/>
+        <Label x:Name="LabelData" Content="Data" Canvas.Left="305" Canvas.Top="11" Width="111" Foreground="#FFA4A84F" FontSize="11"/>
+        <Image x:Name="imgCam" Height="110" Canvas.Left="60" Canvas.Top="235" Width="132" Source="Resources/home4_load.jpg"/>
         <ProgressBar x:Name="progressBar" Maximum="60" Width="180" Height="10" Canvas.Left="35" Canvas.Top="350" ValueChanged="indiprogres" IsIndeterminate="True" />
         <TextBlock x:Name="textBlock1" Width="10" Canvas.Left="125" Canvas.Top="336" Foreground="#FF247E0A" RenderTransformOrigin="2.875,1.188" Height="11" FontSize="10" />
         <Ellipse x:Name="BrStatus_Copy1" Height="12" Canvas.Left="550" Canvas.Top="89" Width="15" RenderTransformOrigin="0.333,0.417" Fill="#FF387076"/>
@@ -74,7 +74,7 @@
         <TextBlock x:Name="CoketShow_old" Canvas.Left="431" TextWrapping="Wrap" Text="TextBlock" Canvas.Top="205" Height="62" Width="134" Background="#4C030D19" Foreground="#4CF5F99C" FontStyle="Italic"/>
         <Label Content="Автообновление" Canvas.Left="15" Canvas.Top="273" Height="17" Width="58" Foreground="#FFBFCF76" Background="#333BAAB0" VerticalAlignment="Top" FontSize="6"/>
         <CheckBox Content="" Canvas.Left="35" Canvas.Top="295" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" RenderTransformOrigin="0.25,2.8"/>
-        <ProgressBar x:Name="solarProgress" Height="15" Canvas.Left="155" Canvas.Top="36" Width="65" RenderTransformOrigin="0.5,0.5" ValueChanged="SolarProgress" Maximum="800" SmallChange="1">
+        <ProgressBar x:Name="solarProgress" Height="15" Canvas.Left="96" Canvas.Top="34" Width="65" RenderTransformOrigin="0.5,0.5" ValueChanged="SolarProgress" Maximum="800" SmallChange="1">
             <ProgressBar.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -84,16 +84,33 @@
                 </TransformGroup>
             </ProgressBar.RenderTransform>
         </ProgressBar>
-        <TextBlock x:Name="textSolar" Canvas.Left="200" TextWrapping="Wrap" Canvas.Top="36" Height="21" Width="30" Foreground="#FFBFB92B"/>
-        <Label Content="0" Canvas.Left="165" Canvas.Top="64" Foreground="#FFF3F3F3" FontSize="7" Width="15"/>
-        <Label Content="800" Canvas.Left="155" Foreground="#FFF3F3F3" FontSize="7" Width="25" Height="20" Canvas.Top="-2"/>
-        <Label Content="mA" Canvas.Left="195" Canvas.Top="-2" Foreground="#FFF3F3F3" FontSize="7" Width="35" FontStyle="Italic"/>
+        <TextBlock x:Name="textSolar" Canvas.Left="140" TextWrapping="Wrap" Canvas.Top="52" Height="21" Width="43" Foreground="#FFBFB92B"/>
+        <Label Content="0" Canvas.Left="106" Canvas.Top="61" Foreground="#FFF3F3F3" FontSize="7" Width="15"/>
+        <Label Content="800" Canvas.Left="96" Foreground="#FFF3F3F3" FontSize="7" Width="25" Height="20" Canvas.Top="-4"/>
+        <Label Content="mA" Canvas.Left="136" Canvas.Top="-4" Foreground="#FFF3F3F3" FontSize="7" Width="35" FontStyle="Italic"/>
         <Label Content="Данные" Canvas.Left="410" Canvas.Top="98" Height="17" Width="40" Foreground="#FFBFCF76" Background="#333BAAB0" VerticalAlignment="Top" FontSize="6"/>
         <CheckBox Content="" Canvas.Left="421" Canvas.Top="120" Checked="CheckBox_Checked1" Unchecked="CheckBox_Unchecked1" RenderTransformOrigin="0.25,2.8"/>
         <Button x:Name="btCom1_Copy" Content="2" Canvas.Left="50" Canvas.Top="150" Width="25" Click="Button_Click_2" RenderTransformOrigin="0.4,0.75"/>
         <Button Content="&gt;&gt;" Canvas.Left="73" Canvas.Top="30" Width="24" Height="21" RenderTransformOrigin="0.577,0.545" Click="ShowBar" Cursor="ArrowCD"/>
         <Button Content="&lt;&lt;" Canvas.Left="35" Canvas.Top="31" Width="24" Click="ShowWGTab" Cursor="UpArrow"/>
         <Button Content="==" Canvas.Left="35" Canvas.Top="56" Width="24" Click="ShowGraf" Cursor="UpArrow" RenderTransformOrigin="0.625,0.45"/>
+        <ProgressBar x:Name="solarProgressVolt" Height="15" Canvas.Left="166" Canvas.Top="34" Width="65" ValueChanged="voltcharge" RenderTransformOrigin="0.5,0.5" Maximum="13" Minimum="12">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-89.927"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <Label Content="V" Canvas.Left="207" Canvas.Top="-4" Foreground="#FFFBF3F3" RenderTransformOrigin="0.294,0.269" FontSize="7" Height="18" Width="15"/>
+        <TextBox x:Name="textsolarV" Height="21" Canvas.Left="211" TextWrapping="Wrap" Canvas.Top="52" Width="45" Background="{x:Null}" Foreground="#FF64E4E4" IsEnabled="False" BorderBrush="{x:Null}"/>
+        <TextBox x:Name="watshow" Height="19" Canvas.Left="244" TextWrapping="Wrap" Canvas.Top="14" Width="47" Foreground="#FFB82626" IsEnabled="False"/>
+        <Label Content="Ваты" Canvas.Left="246" RenderTransformOrigin="-0.132,-2.423" Foreground="#FFA0BB25" Canvas.Top="-6" FontSize="10"/>
+        <Label Content="12" Canvas.Left="173" Canvas.Top="61" Foreground="#FFF3F3F3" FontSize="7" Width="19"/>
+        <Label Content="13" Canvas.Left="174" Foreground="#FFF3F3F3" FontSize="7" Width="25" Height="20" Canvas.Top="-4"/>
+       
     </Canvas>
 
 </Window>

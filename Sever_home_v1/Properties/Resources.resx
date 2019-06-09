@@ -118,19 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ai_back" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ai_back.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ThinkstockPhotos_509258281" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ThinkstockPhotos-509258281.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="_039727d622d0" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\039727d622d0.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="home3_load" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\home3_load.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-    <data name="home4_load" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="home4_load" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\home4_load.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

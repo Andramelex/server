@@ -1,12 +1,9 @@
 ﻿using System;
 
 using System.Text;
-
 using System.Windows;
 using System.Windows.Controls;
-
 using System.Windows.Media.Imaging;
-
 using System.IO.Ports;
 using System.Net;
 using System.Net.Sockets;
@@ -15,6 +12,7 @@ using System.IO;
 using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
+//using System.Windows.Forms;
 
 namespace Sever_home_v1
 {
@@ -360,13 +358,18 @@ namespace Sever_home_v1
             Console.WriteLine("Отправили 2");
 
         }
-        
 
+      //  System.Windows.Forms.NotifyIcon nIcon = new System.Windows.Forms.NotifyIcon();
         private void BtSendTwo_2(object sender, RoutedEventArgs e)
         {
+            //this.WindowState = System.Windows.WindowState.Minimized;
+            //this.nIcon.Icon = new Icon(@"../../Cartman-General.ico");
+            //this.nIcon.ShowBalloonTip(5000, "Hi", "This is a BallonTip from Windows Notification", System.Windows.Forms.ToolTipIcon.Info);
+           // nIcon.ShowBalloonTip(500, "Сообщение", "Я свернулась:)", System.Windows.Forms.ToolTipIcon.Warning);
+
             //port.Write("3");
             //Console.WriteLine("Отправили 3");
-            LoadDateCom();
+            //LoadDateCom();
         }
 
         private void BtSendSix_2(object sender, RoutedEventArgs e)
@@ -481,17 +484,6 @@ namespace Sever_home_v1
            // MessageBox.Show("Запустили разбор" ,
            //       "Внимание");
            
-
-           // writePath[0] = @"D:\SomeDir\data_1.txt";
-           // writePath[1] = @"D:\SomeDir\data_2.txt";
-            //writePath[2] = @"D:\SomeDir\data_3.txt";
-            //writePath[3] = @"D:\SomeDir\data_4.txt";
-            //writePath[4] = @"D:\SomeDir\data_5.txt";
-            //writePath[5] = @"D:\SomeDir\data_6.txt";
-            //writePath[6] = @"D:\SomeDir\data_7.txt";
-            //writePath[7] = @"D:\SomeDir\data_8.txt";
-            //writePath[8] = @"D:\SomeDir\data_9.txt";
-            //writePath[9] = @"D:\SomeDir\data_time.txt";
             if (splitData[0]=="1")
             {
                 for (int i=1; i < splitData.Length;i++)
@@ -561,24 +553,30 @@ namespace Sever_home_v1
                 //       "Внимание",
                 // MessageBoxButton.YesNo, MessageBoxImage.Question);
                 string[] writePath2 = new string[9];
-                writePath2[1] = @"D:\SomeDir\data_soc_1.txt";
-                writePath2[2] = @"D:\SomeDir\data_soc_2.txt";
-                writePath2[3] = @"D:\SomeDir\data_soc_3.txt";
-                writePath2[4] = @"D:\SomeDir\data_soc_4.txt";
-                writePath2[5] = @"D:\SomeDir\data_soc_5.txt";
-                writePath2[6] = @"D:\SomeDir\data_soc_6.txt";
-                writePath2[7] = @"D:\SomeDir\data_soc_7.txt";
-                writePath2[8] = @"D:\SomeDir\data_soc_8.txt";
+                //writePath2[1] = @"D:\SomeDir\data_soc_1.txt";
+                //writePath2[2] = @"D:\SomeDir\data_soc_2.txt";
+                //writePath2[3] = @"D:\SomeDir\data_soc_3.txt";
+                //writePath2[4] = @"D:\SomeDir\data_soc_4.txt";
+                //writePath2[5] = @"D:\SomeDir\data_soc_5.txt";
+                //writePath2[6] = @"D:\SomeDir\data_soc_6.txt";
+                //writePath2[7] = @"D:\SomeDir\data_soc_7.txt";
+                //writePath2[8] = @"D:\SomeDir\data_soc_8.txt";
                // MessageBox.Show("солар готовиться к : " + splitDataSoc[6],
                //    "Внимание");
                 
                 string solarSplit = splitDataSoc[6];
+                string soloarSplit2 = splitDataSoc[7];
+               // string 
                double solar = 0.0;
+                double solar2 = 0.0;
+                double sumwat = 0;
                 //MessageBox.Show("мы получили минусовой вольтаж " + splitDataSoc[6],
                 //                       "вот оно че");
                 try
                {
                    solar = Convert.ToDouble(solarSplit.Replace(".", ",")); // Convert.ToDouble(solarSplit);
+                    solar2 = Convert.ToDouble(soloarSplit2.Replace(".", ","));
+                    sumwat = (solar / 1000) * solar2;
                }
                catch (Exception e)
                {
@@ -590,9 +588,12 @@ namespace Sever_home_v1
                //float solar = float.Parse(splitDataSoc[6]);
                Application.Current.Dispatcher.Invoke(() =>
            {
-
+               solarProgressVolt.Value = solar2;
               solarProgress.Value = solar;
                textSolar.Text = splitDataSoc[6];
+               textsolarV.Text = splitDataSoc[7];
+               watshow.Text = sumwat.ToString("0.##");
+
               solarMassBase();
                
 
@@ -619,6 +620,7 @@ namespace Sever_home_v1
             }
         }
 
+       
         //функция что собираетс данные с сокета для рисования графика. и пердает их на вторую форму через общий арай массив
         private void solarMassBase()
         {
@@ -939,6 +941,11 @@ namespace Sever_home_v1
                 fromgraf.Show();
             }
             else { graptableEnable = 0; }
+        }
+
+        private void voltcharge(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
         }
     }
        
