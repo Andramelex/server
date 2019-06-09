@@ -94,7 +94,7 @@
         <Button Content="&gt;&gt;" Canvas.Left="73" Canvas.Top="30" Width="24" Height="21" RenderTransformOrigin="0.577,0.545" Click="ShowBar" Cursor="ArrowCD"/>
         <Button Content="&lt;&lt;" Canvas.Left="35" Canvas.Top="31" Width="24" Click="ShowWGTab" Cursor="UpArrow"/>
         <Button Content="==" Canvas.Left="35" Canvas.Top="56" Width="24" Click="ShowGraf" Cursor="UpArrow" RenderTransformOrigin="0.625,0.45"/>
-        <ProgressBar x:Name="solarProgressVolt" Height="15" Canvas.Left="166" Canvas.Top="34" Width="65" ValueChanged="voltcharge" RenderTransformOrigin="0.5,0.5" Maximum="13" Minimum="12">
+        <ProgressBar x:Name="solarProgressVolt" Height="15" Canvas.Left="166" Canvas.Top="34" Width="65" RenderTransformOrigin="0.5,0.5" Maximum="13" Minimum="12">
             <ProgressBar.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
