@@ -35,15 +35,15 @@
             </TextBox.RenderTransform>
         </TextBox>
         <Button x:Name="ButClosePort" Content="Serial Port Close" Canvas.Left="441" Canvas.Top="35" Width="100" Height="30" Click="ButPortClose"/>
-        <Button x:Name="BtSendOne" Content="Pot send 2" Canvas.Left="320" Canvas.Top="150" Width="75" Click="BtSendOne_1"/>
+        <Button x:Name="BtSendOne" Content="_1 Обрезать логи" Canvas.Left="320" Canvas.Top="150" Width="75" Click="BtSendOne_1"/>
         <Button x:Name="BtSendTwo" Content="Post send 3" Canvas.Left="320" Canvas.Top="185" Width="75" Click="BtSendTwo_2"/>
         <Button x:Name="BtSendSix" Content="Port Send 1" Canvas.Left="320" Canvas.Top="115" Width="75" Click="BtSendSix_2"/>
         <Button x:Name="btCom0" Content="0" Canvas.Left="50" Canvas.Top="85" Width="25" Click="Button_Click"/>
         <Button x:Name="btCom1" Content="1" Canvas.Left="50" Canvas.Top="115" Width="25" Click="Button_Click_1" RenderTransformOrigin="0.4,0.75"/>
         <Ellipse x:Name="BrStatus_Copy" Height="12" Canvas.Left="550" Canvas.Top="46" Width="15" RenderTransformOrigin="0.333,0.417" Fill="#FF387076"/>
         <Ellipse x:Name="BrStatus" Height="12" Canvas.Left="550" Stroke="#1EBBA4A4" Canvas.Top="45" Width="15" RenderTransformOrigin="0.333,0.417" Fill="{DynamicResource StatusOff}"/>
-        <Label x:Name="LabelData" Content="Data" Canvas.Left="305" Canvas.Top="11" Width="111" Foreground="#FFA4A84F" FontSize="11"/>
-        <Image x:Name="imgCam" Height="110" Canvas.Left="60" Canvas.Top="235" Width="132" Source="Resources/home4_load.jpg"/>
+        <Label x:Name="LabelData" Content="Data" Canvas.Top="6" Width="111" Foreground="#FFA4A84F" FontSize="11" Canvas.Left="-1"/>
+        <Image x:Name="imgCam" Height="110" Canvas.Left="60" Canvas.Top="235" Width="132" Source="Resources/home4_load.jpg" MouseLeftButtonDown="cliclMouse_open"/>
         <ProgressBar x:Name="progressBar" Maximum="60" Width="180" Height="10" Canvas.Left="35" Canvas.Top="350" ValueChanged="indiprogres" IsIndeterminate="True" />
         <TextBlock x:Name="textBlock1" Width="10" Canvas.Left="125" Canvas.Top="336" Foreground="#FF247E0A" RenderTransformOrigin="2.875,1.188" Height="11" FontSize="10" />
         <Ellipse x:Name="BrStatus_Copy1" Height="12" Canvas.Left="550" Canvas.Top="89" Width="15" RenderTransformOrigin="0.333,0.417" Fill="#FF387076"/>
@@ -72,8 +72,8 @@
         <Label Canvas.Left="421" Canvas.Top="295" Width="119" Foreground="#FFE4B0B0" Content="Консоль запроса"/>
         <TextBlock x:Name="CoketShow" Canvas.Left="431" TextWrapping="Wrap" Text="TextBlock" Canvas.Top="137" Height="63" Width="134" Background="#33030D19" Foreground="#FFF5F99C" FontStyle="Italic"/>
         <TextBlock x:Name="CoketShow_old" Canvas.Left="431" TextWrapping="Wrap" Text="TextBlock" Canvas.Top="205" Height="62" Width="134" Background="#4C030D19" Foreground="#4CF5F99C" FontStyle="Italic"/>
-        <Label Content="Автообновление" Canvas.Left="15" Canvas.Top="273" Height="17" Width="58" Foreground="#FFBFCF76" Background="#333BAAB0" VerticalAlignment="Top" FontSize="6"/>
-        <CheckBox Content="" Canvas.Left="35" Canvas.Top="295" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" RenderTransformOrigin="0.25,2.8"/>
+        <Label Content="Автообновление" Canvas.Left="4" Canvas.Top="273" Height="17" Width="58" Foreground="#FFBFCF76" Background="#333BAAB0" VerticalAlignment="Top" FontSize="6"/>
+        <CheckBox Content="" Canvas.Left="24" Canvas.Top="295" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" RenderTransformOrigin="0.25,2.8"/>
         <ProgressBar x:Name="solarProgress" Height="15" Canvas.Left="96" Canvas.Top="34" Width="65" RenderTransformOrigin="0.5,0.5" ValueChanged="SolarProgress" Maximum="800" SmallChange="1">
             <ProgressBar.RenderTransform>
                 <TransformGroup>
@@ -110,7 +110,7 @@
         <Label Content="Ваты" Canvas.Left="246" RenderTransformOrigin="-0.132,-2.423" Foreground="#FFA0BB25" Canvas.Top="-6" FontSize="10"/>
         <Label Content="12" Canvas.Left="173" Canvas.Top="61" Foreground="#FFF3F3F3" FontSize="7" Width="19"/>
         <Label Content="13" Canvas.Left="174" Foreground="#FFF3F3F3" FontSize="7" Width="25" Height="20" Canvas.Top="-4"/>
-       
+
     </Canvas>
 
 </Window>

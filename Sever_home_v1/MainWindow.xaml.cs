@@ -12,7 +12,8 @@ using System.IO;
 using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Windows.Media;
+using Image = System.Windows.Controls.Image;
 
 namespace Sever_home_v1
 {
@@ -41,9 +42,9 @@ namespace Sever_home_v1
         int OtvetSocketInt = 0;
         int AvtDataCom = 0;
        public static string[] writePath = new string[10];
-       
+        public static string[] writePath2 = new string[9];
 
-        
+
         public static double[] CoMass = new double[10];
         public static string[] CoMassData = new string[10];
        
@@ -65,6 +66,15 @@ namespace Sever_home_v1
             writePath[7] = @"D:\SomeDir\data_8.txt";
             writePath[8] = @"D:\SomeDir\data_9.txt";
             writePath[9] = @"D:\SomeDir\data_time.txt";
+            
+            writePath2[1] = @"D:\SomeDir\data_soc_1.txt";
+            writePath2[2] = @"D:\SomeDir\data_soc_2.txt";
+            writePath2[3] = @"D:\SomeDir\data_soc_3.txt";
+            writePath2[4] = @"D:\SomeDir\data_soc_4.txt";
+            writePath2[5] = @"D:\SomeDir\data_soc_5.txt";
+            writePath2[6] = @"D:\SomeDir\data_soc_6.txt";
+            writePath2[7] = @"D:\SomeDir\data_soc_7.txt";
+            writePath2[8] = @"D:\SomeDir\data_soc_8.txt";
 
             InitializeComponent();
             serchCom();
@@ -504,7 +514,7 @@ namespace Sever_home_v1
                    
                 }
             }
-            LongLogCut();
+           // LongLogCut(); // автообрезание логов
         }
         public static void LongLogCut() {
            // MessageBox.Show("Запустили обрезку","Внимание");
@@ -522,6 +532,18 @@ namespace Sever_home_v1
                     }
                 //    MessageBox.Show("записали{}" + i, "Внимание");
                 }
+            }
+            for (int i = 1; i<9; i++)
+            {
+                List<string> linesCut = File.ReadLines(writePath2[i]).Reverse().Take(1444).ToList();
+                linesCut.Reverse();
+                using (StreamWriter sw = new StreamWriter(writePath2[i], false, System.Text.Encoding.Default))
+                {
+                    foreach (string str in linesCut) {
+                        sw.WriteLine(str);
+                    }
+                }
+
             }
            
         }
@@ -552,15 +574,7 @@ namespace Sever_home_v1
                 // MessageBox.Show("Соекет отдал +"+ x,
                 //       "Внимание",
                 // MessageBoxButton.YesNo, MessageBoxImage.Question);
-                string[] writePath2 = new string[9];
-                //writePath2[1] = @"D:\SomeDir\data_soc_1.txt";
-                //writePath2[2] = @"D:\SomeDir\data_soc_2.txt";
-                //writePath2[3] = @"D:\SomeDir\data_soc_3.txt";
-                //writePath2[4] = @"D:\SomeDir\data_soc_4.txt";
-                //writePath2[5] = @"D:\SomeDir\data_soc_5.txt";
-                //writePath2[6] = @"D:\SomeDir\data_soc_6.txt";
-                //writePath2[7] = @"D:\SomeDir\data_soc_7.txt";
-                //writePath2[8] = @"D:\SomeDir\data_soc_8.txt";
+                
                // MessageBox.Show("солар готовиться к : " + splitDataSoc[6],
                //    "Внимание");
                 
@@ -943,8 +957,60 @@ namespace Sever_home_v1
             else { graptableEnable = 0; }
         }
 
-        private void voltcharge(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void cliclMouse_open(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            BaseForm baseform1 = new BaseForm();
+            baseform1.Owner = this;
+            baseform1.Height = 800;
+            baseform1.Width = 800;
+           
+
+            //Viewbox boxPrivew = new Viewbox();
+            //boxPrivew.StretchDirection = StretchDirection.Both;
+            //boxPrivew.Stretch = Stretch.Fill;
+            //boxPrivew.MaxWidth = 400;
+            //boxPrivew.MaxHeight = 400;
+            //Image zoomeimage = new Image();
+            // zoomeimage.Source = BitmapFrame.Create(new Uri(@"D:\wamp2\www\3\images\cam\web1.jpg"));
+            //zoomeimage.Source = BitmapFrame.Create(new Uri(@"E:\ai_back.jpg"));
+
+          //  Image myImage = new Image();
+          //  myImage.Width = 200;
+
+
+          //  // Create source
+          //  BitmapImage myBitmapImage = new BitmapImage();
+
+          //  // BitmapImage.UriSource must be in a BeginInit/EndInit block
+          //  myBitmapImage.BeginInit();
+          //  myBitmapImage.UriSource = new Uri(@"D:\wamp2\www\3\images\cam\web1.jpg");
+
+          //  // To save significant application memory, set the DecodePixelWidth or  
+          //  // DecodePixelHeight of the BitmapImage value of the image source to the desired 
+          //  // height or width of the rendered image. If you don't do this, the application will 
+          //  // cache the image as though it were rendered as its normal size rather then just 
+          //  // the size that is displayed.
+          //  // Note: In order to preserve aspect ratio, set DecodePixelWidth
+          //  // or DecodePixelHeight but not both.
+          //  myBitmapImage.DecodePixelWidth = 200;
+          //  myBitmapImage.EndInit();
+          //  //set image source
+          //  // myImage.Source = myBitmapImage;
+
+          //myImage.Source = myBitmapImage;
+
+            //boxPrivew.Child = myImage;
+
+            //baseform1 container = panel;
+            //baseform1.AddChild(boxPrivew);
+
+            //container = this;
+            //container.AddChild(panel);
+
+            // boxPrivew.Stretch = Stretch.Fill;
+            //dynamicViewbox.Child = redCircle;
+            // RootLayout.Children.Add(dynamicViewbox);
+            baseform1.Show();
 
         }
     }

@@ -33,6 +33,7 @@ namespace Sever_home_v1
             chartOneHore[0] = 0;
             LoadData(@"D:\SomeDir\data_2.txt");
             PuttGraf();
+            CheckDataLog();
         }
        
         public SeriesCollection SeriesCollection { get; set; }
@@ -62,7 +63,28 @@ namespace Sever_home_v1
             XFormatter = val => new DateTime((long)val).ToString("yyyy");
             DataContext = this;
         }
-      
+        public void CheckDataLog() {
+            string path = @"D:\SomeDir\data_2.txt";
+            List<string> linesCut = File.ReadLines(path).ToList();
+            int checkday = linesCut.Count;
+           // Console.WriteLine(" логи дней равны: " + checkday);
+           
+            double zz23 =Convert.ToDouble(checkday);
+                      
+
+            //------------------Вот этот метод позовляет изменять Юи в главном потоке из дочерхних потоков
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                zz23 = zz23 / 1444;
+                string result2 = String.Format("{0:f2}", zz23);
+               
+                ChedDayLog.Content = result2; 
+
+
+
+            });
+            //-------------Вот этот метод позовляет изменять Юи в главном потоке из дочерхних потоков
+        }
         public void LoadData(string path)
         {
             LabelText.Text = "Данные за последний час";
@@ -171,7 +193,7 @@ namespace Sever_home_v1
             });
         }
 
-        private void SetLoad_1(object sender, RoutedEventArgs e)
+        private void SetLoad_1(object sender, RoutedEventArgs e) // Влажность хаб ЧАС
         {
             
             string path = @"D:\SomeDir\data_2.txt";
@@ -179,7 +201,7 @@ namespace Sever_home_v1
             clearValues();
         }
 
-        private void SetLoad_2(object sender, RoutedEventArgs e)
+        private void SetLoad_2(object sender, RoutedEventArgs e) // Сo2 Спальня ЧАС
         {
            
             string path = @"D:\SomeDir\data_5.txt";
@@ -187,7 +209,7 @@ namespace Sever_home_v1
             clearValues();
         }
 
-        private void SetLoad_3(object sender, RoutedEventArgs e)
+        private void SetLoad_3(object sender, RoutedEventArgs e) // Темп хаб ЧАС
         {
             string path = @"D:\SomeDir\data_3.txt";
             LoadData(path);
@@ -195,33 +217,70 @@ namespace Sever_home_v1
         }
 
        
-        private void SetLoad_6(object sender, RoutedEventArgs e)
+        private void SetLoad_6(object sender, RoutedEventArgs e)// влажность, спальня ЧАС
         {
             string path = @"D:\SomeDir\data_7.txt";
             LoadData(path);
             clearValues();
         }
 
-        private void Butt_temoZZ(object sender, RoutedEventArgs e)
+        private void Butt_temoZZ(object sender, RoutedEventArgs e) // Темп, спальня ЧАС
         {
             string path = @"D:\SomeDir\data_8.txt";
             LoadData(path);
             clearValues();
         }
 
-        private void SetLoad_5(object sender, RoutedEventArgs e)
+        private void SetLoad_5(object sender, RoutedEventArgs e) // Со, новое (лес) ЧАС
         {
             string path = @"D:\SomeDir\data_soc_3.txt";
             LoadData(path);
             clearValues();
         }
 
-        private void day_set1(object sender, RoutedEventArgs e)
+        private void day_set1(object sender, RoutedEventArgs e)  // Со2 старое  весь день
         {
             string path = @"D:\SomeDir\data_5.txt";
             LoadDataDay(path);
             clearValuesDay();
-        }    
+        }
+
+        private void day_set2(object sender, RoutedEventArgs e) // Со, новое (лес) весь день
+        {
+            string path = @"D:\SomeDir\data_soc_3.txt";
+            LoadDataDay(path);
+            clearValuesDay();
+        }
+
+        private void day_set3(object sender, RoutedEventArgs e) // Влажность (спальня) весь день
+        {
+            string path = @"D:\SomeDir\data_7.txt";
+            LoadDataDay(path);
+            clearValuesDay();
+
+        }
+
+        private void day_set4(object sender, RoutedEventArgs e) // Темерат (спальня) весь день
+        {
+            string path = @"D:\SomeDir\data_8.txt";
+            LoadDataDay(path);
+            clearValuesDay();
+        }
+
+        private void day_set5(object sender, RoutedEventArgs e) // Влажность хаб весь день
+        {
+            string path = @"D:\SomeDir\data_2.txt";
+            LoadDataDay(path);
+            clearValuesDay();
+        }
+
+        private void day_set6(object sender, RoutedEventArgs e) // температура хаб весь день
+        {
+            string path = @"D:\SomeDir\data_3.txt";
+            LoadDataDay(path);
+            clearValuesDay();
+
+        }
     }
 }
 

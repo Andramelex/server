@@ -83,7 +83,8 @@ namespace Sever_home_v1
         private void clearLog()
         {
            MainWindow.LongLogCut();
-            throw new NotImplementedException();
+            MessageBox.Show("Логи обрезаны");
+            
         }
     }
 }
