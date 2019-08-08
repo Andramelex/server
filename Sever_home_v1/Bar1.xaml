@@ -20,9 +20,10 @@
             </Wpf:CartesianChart.AxisX>
         </Wpf:CartesianChart>
         <Button x:Name="BarDay" Content="Данные за сутки" HorizontalAlignment="Left" Margin="30,285,0,0" VerticalAlignment="Top" Width="125" Height="30" Click="LoadDataDay"/>
-        <TextBox x:Name="Tex1" HorizontalAlignment="Left" Height="60" Margin="428,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" BorderBrush="White" IsEnabled="False"/>
+        <TextBox x:Name="Tex1" HorizontalAlignment="Left" Height="60" Margin="385,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" BorderBrush="White" IsEnabled="False"/>
         <Button Content="Данные за час" HorizontalAlignment="Left" Height="29" Margin="365,286,0,0" VerticalAlignment="Top" Width="115" Click="ReloadGraf"/>
-        <TextBox x:Name="tex2" HorizontalAlignment="Left" Height="23" Margin="135,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsEnabled="False" BorderBrush="{x:Null}" Background="#66EFF7BB"/>
+        <TextBox x:Name="tex2" HorizontalAlignment="Left" Height="23" Margin="30,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsEnabled="False" BorderBrush="{x:Null}" Background="#66EFF7BB"/>
+        <TextBox x:Name="Tex1_Copy" HorizontalAlignment="Left" Height="60" Margin="248,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" BorderBrush="White" IsEnabled="False"/>
 
     </Grid>
 

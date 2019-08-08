@@ -138,6 +138,8 @@ namespace Sever_home_v1
             sum = sum / key;
             sum = Math.Round(sum, 3);
             Tex1.Text = "Средний вольтаж: " + sum + "mA";
+           
+            Tex1_Copy.Text = " Kpd за период: " + (sum * 24) + "mA";
             
 
         }

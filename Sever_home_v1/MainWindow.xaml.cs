@@ -553,8 +553,10 @@ namespace Sever_home_v1
         // функция для разбора данных что пришли по сокету
         public void RazborDateSoc()
         {
+            
             //string tesOtvet = "20;12;13;14;15;16";
             data1 = data.ToString();
+            Console.WriteLine("На сокет упало: " + data1);
             if (data1.Length < 4)
             {
                 // MessageBox.Show("Соекет отдал малую команду, будем передавать в ком", "Внимание");
@@ -683,7 +685,8 @@ namespace Sever_home_v1
         //функция что разбирает коды полученные по сокету
         private void SocToCom()
         {
-           // MessageBox.Show("Мы запустили отправку"+data1, "Внимание");
+            Console.WriteLine("мы получили из сокета: "+ data1);
+            // MessageBox.Show("Мы запустили отправку"+data1, "Внимание");
             switch (data1)
             {
                 case "12":
